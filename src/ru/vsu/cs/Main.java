@@ -11,9 +11,9 @@ public class Main
 
     public static void main(String[] args)
     {
-	    Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
-	    System.out.print("Введите первый момент времени: ");
+        System.out.print("Введите первый момент времени: ");
 	    int h1 = scanner.nextInt();
         int m1 = scanner.nextInt();
         int s1 = scanner.nextInt();
