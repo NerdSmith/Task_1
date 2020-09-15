@@ -13,17 +13,17 @@ public class Main
     {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Введите первый момент времени: ");
+        System.out.print("Enter the first point in time: ");
         int h1 = scanner.nextInt();
         int m1 = scanner.nextInt();
         int s1 = scanner.nextInt();
 
-        System.out.print("Введите второй момент времени: ");
+        System.out.print("Enter the second point in time: ");
         int h2 = scanner.nextInt();
         int m2 = scanner.nextInt();
         int s2 = scanner.nextInt();
 
-        System.out.print("Секунд с момента времени 1 до момента времени 2: " + calcSeconds(h1, h2, m1, m2, s1, s2));
+        System.out.print("Seconds from moment 1 to moment 2: " + calcSeconds(h1, h2, m1, m2, s1, s2));
     }
 
 }
