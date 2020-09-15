@@ -14,7 +14,7 @@ public class Main
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Введите первый момент времени: ");
-	    int h1 = scanner.nextInt();
+        int h1 = scanner.nextInt();
         int m1 = scanner.nextInt();
         int s1 = scanner.nextInt();
 
