@@ -2,28 +2,42 @@ package ru.vsu.cs;
 
 import java.util.Scanner;
 
-public class Main
-{
-    public static int calcSeconds(int h1, int h2, int m1, int m2, int s1, int s2)
-    {
-        return ((h2+24-h1)*3600 + (m2-m1)*60 + (s2-s1)) % 86400;
-    }
+public class Main {
 
-    public static void main(String[] args)
-    {
+    private static PointInTime enterPointInTime(String name) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter the first point in time: ");
-        int h1 = scanner.nextInt();
-        int m1 = scanner.nextInt();
-        int s1 = scanner.nextInt();
+        System.out.printf("Enter the %s point in time: ", name);
+        int hours = scanner.nextInt();
+        int minutes = scanner.nextInt();
+        int seconds = scanner.nextInt();
+        return new PointInTime(hours, minutes, seconds);
+    }
 
-        System.out.print("Enter the second point in time: ");
-        int h2 = scanner.nextInt();
-        int m2 = scanner.nextInt();
-        int s2 = scanner.nextInt();
+    private static int calcTimeDifferenceInSeconds(PointInTime firstPointInTime, PointInTime secondPointInTime) {
+        TimeConstants timeConstants = new TimeConstants();
 
-        System.out.print("Seconds from moment 1 to moment 2: " + calcSeconds(h1, h2, m1, m2, s1, s2));
+        int hoursDifferenceInSeconds = (secondPointInTime.hours - firstPointInTime.hours + timeConstants.hoursPerDay)
+                * timeConstants.secondsPerHour;
+
+        int minutesDifferenceInSeconds = (secondPointInTime.minutes - firstPointInTime.minutes)
+                * timeConstants.secondsPerMinute;
+
+        int secondsDifference = secondPointInTime.seconds - firstPointInTime.seconds;
+
+        return (hoursDifferenceInSeconds + minutesDifferenceInSeconds + secondsDifference)
+                % timeConstants.secondsPerDay;
+    }
+
+    public static void main(String[] args) {
+
+        PointInTime firstPointInTime = enterPointInTime("first");
+
+        PointInTime secondPointInTime = enterPointInTime("second");
+
+        int secondsFromTheFirstPointToTheSecond = calcTimeDifferenceInSeconds(firstPointInTime, secondPointInTime);
+
+        System.out.print("Seconds from moment 1 to moment 2: " + secondsFromTheFirstPointToTheSecond);
     }
 
 }
